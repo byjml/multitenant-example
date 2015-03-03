@@ -31,4 +31,24 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	/**
+	 * User belongs to one client
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function client()
+	{
+		return $this->belongsTo('App\Client');
+	}
+
+	/**
+	 * User has many projects
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Model
+	 */
+	public function projects()
+	{
+		return $this->hasMany('App\Project');
+	}
+
 }

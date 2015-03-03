@@ -142,7 +142,9 @@ return [
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BusServiceProvider',
 		'App\Providers\ConfigServiceProvider',
+		'App\Providers\ContextServiceProvider',
 		'App\Providers\EventServiceProvider',
+		'App\Providers\RepositoryServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
 	],

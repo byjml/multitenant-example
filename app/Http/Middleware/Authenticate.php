@@ -32,6 +32,8 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+		$context = \App::make('App\Contexts\Context');
+		
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
@@ -43,6 +45,12 @@ class Authenticate {
 				return redirect()->guest('auth/login');
 			}
 		}
+
+		// Get logged in user client id
+		$client = $this->auth->user()->client_id;
+
+		// Set tenant (client_id) based contex
+		$context->set(\App\Client::find($client));
 
 		return $next($request);
 	}
